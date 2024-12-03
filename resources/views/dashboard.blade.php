@@ -38,7 +38,7 @@
 
             <!-- Main Content -->
             <div class="container col-md-10">
-                <h2 class="mb-4">Welcome, Admin!</h2>
+                <h2 class="mb-4">Welcome to  Admin Panel!</h2>
 
                 <!-- Table -->
                 <div class="card mt-4">

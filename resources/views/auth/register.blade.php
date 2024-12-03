@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Registration Page</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome CSS -->
@@ -18,19 +18,16 @@
             height: 100vh;
             margin: 0;
             flex-direction: column;
-            /* Align content vertically */
         }
 
         h4 {
             margin-bottom: 40px;
-            /* Add spacing between the title and the card */
             color: #333;
         }
 
         .login-card {
             background: #fff;
             border-radius: 8px;
-            /* Reduced border radius */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             max-width: 400px;
@@ -49,12 +46,10 @@
 
         .login-card .form-control {
             border-radius: 3px;
-            /* Reduced input field border radius */
         }
 
         .login-card .btn {
             border-radius: 5px;
-            /* Reduced button border radius */
             background-color: #28a745;
             color: #fff;
         }
@@ -63,56 +58,11 @@
             background-color: #218838;
         }
 
-        .login-card .form-check-input:checked {
-            background-color: #28a745;
-            /* Green color for checked checkbox */
-            border-color: #28a745;
-        }
-
-        .login-card .form-check-label {
-            margin-left: 5px;
-        }
-
-        .login-card .forgot-password {
-            text-decoration: none;
-            color: #6c757d;
-        }
-
-        .login-card .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        .login-card .signup-link {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .login-card .signup-link:hover {
-            text-decoration: underline;
-        }
-
         .login-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-        }
-
-        .social-buttons button {
-            background-color: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #555;
-            margin-left: 5px;
-        }
-
-        .social-buttons button:hover {
-            background-color: #e9ecef;
         }
 
         .password-wrapper {
@@ -131,20 +81,12 @@
 </head>
 
 <body>
-    <h4>Login #05</h4>
+    <h4>Register</h4>
     <div class="login-card">
-        {{-- <img src="beach.jpg" alt="Background Image"> --}}
         <img src="{{ asset('assets/images/beach.jpg') }}" alt="Background Image">
 
         <div class="card-body p-5">
-            <div class="login-header">
-                <h5 class="mb-3">Sign In</h5>
-                <div class="social-buttons row">
-                    <button class="me-2"><i class="fab fa-facebook-f"></i></button>
-                    <button class="me-2"><i class="fab fa-twitter"></i></button>
-                </div>
-            </div>
-            <form method="POST" action="{{ url('/login') }}">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -156,28 +98,41 @@
                     </div>
                 @endif
 
+                <!-- Name Field -->
                 <div class="mb-3">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}" required>
                 </div>
+
+                <!-- Email Field -->
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email') }}" required>
+                </div>
+
+                <!-- Username Field -->
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}" required>
+                </div>
+
+                <!-- Password Field -->
                 <div class="mb-3 password-wrapper">
-                    <input type="password" name="password" class="form-control" placeholder="Password"
-                        id="passwordField" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="passwordField" required>
                     <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
                 </div>
-                <button type="submit" class="btn btn-success w-100 mb-3">Sign In</button>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input mt-1" type="checkbox" id="rememberMe">
-                        <label class="form-check-label text-success" for="rememberMe">Remember Me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+
+                <!-- Confirm Password Field -->
+                <div class="mb-3 password-wrapper">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mb-3">Register</button>
+                <div class="text-center mt-3">
+                    <span>Already a member?<a href="{{ route('login') }}" class="signup-link text-success">Login</a></span>
                 </div>
             </form>
-            <div class="text-center mt-3">
-                <span>Not a member?<a href="{{route('register')}}" class="signup-link text-success">Sign Up</a></span>
-            </div>
         </div>
     </div>
+
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
