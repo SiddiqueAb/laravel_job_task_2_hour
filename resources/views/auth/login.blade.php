@@ -98,6 +98,13 @@
             margin-bottom: 20px;
         }
 
+
+        .form-control:focus {
+            outline: none;
+            border: 1px solid #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
         .social-buttons button {
             background-color: #f5f5f5;
             border: 1px solid #ddd;
@@ -112,7 +119,8 @@
         }
 
         .social-buttons button:hover {
-            background-color: #e9ecef;
+            background-color: #28a745; /* Green on hover */
+            color: #fff; /* Text color for green */
         }
 
         .password-wrapper {
