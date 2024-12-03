@@ -17,7 +17,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.create') }}">Add User</a> <!-- Link to Add User page -->
+                    </li>
                     <li class="nav-item">
                         {{-- <a class="nav-link" href="{{ route('logout') }}">Logout</a>\ --}}
 

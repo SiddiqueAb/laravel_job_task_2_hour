@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistrationController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,3 +30,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 
 Route::get('register', [RegistrationController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegistrationController::class, 'register']);
+
+Route::get('/dashboard/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/dashboard/users/store', [UserController::class, 'store'])->name('users.store');
